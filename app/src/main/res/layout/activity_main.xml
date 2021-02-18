@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/currentTemp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:text="43.20"
+        android:background="@drawable/round_borders"
+        android:textColor="#ffffff"
+        android:textSize="50sp"/>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/currentTemp"
+        android:background="@drawable/round_borders"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:id="@+id/lowTemp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="Low: 39.20"
+            android:textColor="#ffffff"
+            android:textSize="25sp"/>
+
+        <TextView
+            android:id="@+id/highTemp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/lowTemp"
+            android:text="High: 49.4"
+            android:textColor="#ffffff"
+            android:textSize="25sp"/>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/firstWord"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="20dp"
+        android:text="firstWord"
+        android:textSize="20sp"
+        android:textColor="#ffffff"/>
+
+    <TextView
+        android:id="@+id/secondWord"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        android:text="secondWord"
+        android:textSize="20sp"
+        android:textColor="#ffffff"/>
+
+
+</RelativeLayout>
