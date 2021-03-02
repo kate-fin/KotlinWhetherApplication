@@ -4,4 +4,8 @@
         android:id="@+id/todo_id"
         android:orderInCategory="1"
         android:title="Todo List"/>
+    <item
+        android:id="@+id/marvel_id"
+        android:orderInCategory="1"
+        android:title="Retrofit test"/>
 </menu>
