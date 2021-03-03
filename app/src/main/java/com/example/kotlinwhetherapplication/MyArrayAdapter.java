@@ -25,10 +25,15 @@ public class MyArrayAdapter extends BaseAdapter {
     private static List<Boolean> checkSelected;    // store select/unselect information about the values in the list
     private static List<Integer> showNow;
     private ViewHolder holder;
-    final String ALL = "all";
-    final String ACTIVE = "active";
-    final String COMPLETED = "completed";
-    private String mode;
+    enum Mode{
+        ALL,
+        ACTIVE,
+        COMPLETED
+    }
+//    final String ALL = "all";
+//    final String ACTIVE = "active";
+//    final String COMPLETED = "completed";
+    private Mode mode;
 
 
     public static List<Boolean> getCheckSelected(){
@@ -56,7 +61,7 @@ public class MyArrayAdapter extends BaseAdapter {
     }
 
 
-    public void setModeSelected(String value){
+    public void setModeSelected(Mode value){
         mode = value;
     }
 
@@ -66,7 +71,7 @@ public class MyArrayAdapter extends BaseAdapter {
     }
 
     public void setShowNow(){
-        ArrayList<Integer> temp = new ArrayList<Integer>();
+        ArrayList<Integer> temp = new ArrayList<>();
         switch (mode){
             case ALL:
                 for(int i = 0; i < mListItems.size(); i++){
@@ -92,10 +97,10 @@ public class MyArrayAdapter extends BaseAdapter {
     }
 
     public MyArrayAdapter(Context context){
-        mListItems = new ArrayList<String>();
+        mListItems = new ArrayList<>();
         mInflater = LayoutInflater.from(context);
-        checkSelected = new ArrayList<Boolean>();
-        showNow = new ArrayList<Integer>();
+        checkSelected = new ArrayList<>();
+        showNow = new ArrayList<>();
     }
 
     @Override
@@ -118,6 +123,7 @@ public class MyArrayAdapter extends BaseAdapter {
     }
 
 
+    @SuppressLint("InflateParams")
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         // TODO Auto-generated method stub
@@ -145,13 +151,7 @@ public class MyArrayAdapter extends BaseAdapter {
         //whenever the checkbox is clicked the selected values textview is updated with new selected values
         holder.chkbox.setOnClickListener(v -> {
             // TODO Auto-generated method stub
-            Log.println(Log.INFO, "MyLog", "Adapter checkbox clickListener");
             checkSelected.set(showNow.get(position), !checkSelected.get(showNow.get(position)));
-            Log.println(Log.INFO, "MyLog", String.valueOf(position));
-            for (int i = 0; i < checkSelected.size(); i++) {
-                Log.println(Log.INFO, "MyLog", String.valueOf(checkSelected.size()) +
-                        " - " + String.valueOf(i) + "   " + checkSelected.get(i));
-            }
             setShowNow();
             notifyDataSetChanged();
         });

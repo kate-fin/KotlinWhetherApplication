@@ -1,7 +1,5 @@
-package com.example.kotlinwhetherapplication.Retrofit
+package com.example.kotlinwhetherapplication.retrofit
 
-import com.google.gson.Gson
-import com.google.gson.GsonBuilder
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 

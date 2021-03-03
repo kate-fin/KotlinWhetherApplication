@@ -1,4 +1,4 @@
-package com.example.kotlinwhetherapplication.Adapter
+package com.example.kotlinwhetherapplication.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -8,7 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.example.kotlinwhetherapplication.Model.Movie
+import com.example.kotlinwhetherapplication.model.Movie
 import com.example.kotlinwhetherapplication.R
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_layout.view.*

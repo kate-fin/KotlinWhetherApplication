@@ -1,4 +1,4 @@
-package com.example.kotlinwhetherapplication.Model
+package com.example.kotlinwhetherapplication.model
 
 data class Movie (
     var name: String? = null,

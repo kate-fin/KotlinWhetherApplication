@@ -24,7 +24,7 @@ class TodoActivity : AppCompatActivity() {
 
         listAdapter = MyArrayAdapter(this)
         open()
-        listAdapter.setModeSelected("all")
+        listAdapter.setModeSelected(MyArrayAdapter.Mode.ALL)
         listAdapter.setShowNow()
         listView.adapter = listAdapter
 
@@ -43,7 +43,7 @@ class TodoActivity : AppCompatActivity() {
         allInput.setOnClickListener {
             print("All Button ")
             println("checkArr - ${MyArrayAdapter.getCheckSelected()}")
-            listAdapter.setModeSelected("all")
+            listAdapter.setModeSelected(MyArrayAdapter.Mode.ALL)
             listAdapter.setShowNow()
             listAdapter.notifyDataSetChanged()
         }
@@ -51,7 +51,7 @@ class TodoActivity : AppCompatActivity() {
         activeInput.setOnClickListener {
             print("Active Button ")
             println("checkArr - ${MyArrayAdapter.getCheckSelected()}")
-            listAdapter.setModeSelected("active")
+            listAdapter.setModeSelected(MyArrayAdapter.Mode.ACTIVE)
             listAdapter.setShowNow()
             listAdapter.notifyDataSetChanged()
         }
@@ -59,7 +59,7 @@ class TodoActivity : AppCompatActivity() {
         completedInput.setOnClickListener {
             print("Completed button ")
             println("checkArr - ${MyArrayAdapter.getCheckSelected()}")
-            listAdapter.setModeSelected("completed")
+            listAdapter.setModeSelected(MyArrayAdapter.Mode.COMPLETED)
             listAdapter.setShowNow()
             listAdapter.notifyDataSetChanged()
         }
@@ -67,9 +67,9 @@ class TodoActivity : AppCompatActivity() {
 
     fun open() {
         val text = readFile()
-        if (text != ""){
-            val myClass = Gson().fromJson(text, Array<DataItems> :: class.java).toList()
-            for (ob in myClass){
+        if (text != "") {
+            val myClass = Gson().fromJson(text, Array<DataItems>::class.java).toList()
+            for (ob in myClass) {
                 listAdapter.addIntoCheckSelected(ob.state)
                 listAdapter.addIntoListItems(ob.thing)
                 println("open: ${ob.thing} - ${ob.state}")
@@ -81,9 +81,10 @@ class TodoActivity : AppCompatActivity() {
     fun save() {
         val jsonArr = mutableListOf<DataItems>()
         println("mList ${listAdapter.getListItems()}")
-        for (i in 0 until listAdapter.getListItems().size){
+        for (i in 0 until listAdapter.getListItems().size) {
             val valString = listAdapter.getListItems()[i]
-            val state = MyArrayAdapter.getCheckSelected(i)//i in completedInd //if (i+1 in activeArr) true else false
+            val state =
+                MyArrayAdapter.getCheckSelected(i)//i in completedInd //if (i+1 in activeArr) true else false
             jsonArr.add(DataItems(valString, state))
         }
         val myJSON = Gson().toJson(jsonArr)
@@ -120,7 +121,7 @@ class TodoActivity : AppCompatActivity() {
         }
     }
 
-    fun readFile():String {
+    fun readFile(): String {
         try {
             // открываем поток для чтения
             val br = BufferedReader(

@@ -1,7 +1,7 @@
-package com.example.kotlinwhetherapplication.Interface
+package com.example.kotlinwhetherapplication.interfaces
 
-import com.example.kotlinwhetherapplication.Model.Forecast
-import com.example.kotlinwhetherapplication.Model.Movie
+import com.example.kotlinwhetherapplication.model.Forecast
+import com.example.kotlinwhetherapplication.model.Movie
 import retrofit2.http.*
 import retrofit2.Call
 

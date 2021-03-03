@@ -4,10 +4,10 @@ import android.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.kotlinwhetherapplication.Adapter.MyMovieAdapter
-import com.example.kotlinwhetherapplication.Common.Common
-import com.example.kotlinwhetherapplication.Interface.RetrofitServieces
-import com.example.kotlinwhetherapplication.Model.Movie
+import com.example.kotlinwhetherapplication.adapter.MyMovieAdapter
+import com.example.kotlinwhetherapplication.сommon.Common
+import com.example.kotlinwhetherapplication.interfaces.RetrofitServieces
+import com.example.kotlinwhetherapplication.model.Movie
 import dmax.dialog.SpotsDialog
 import kotlinx.android.synthetic.main.activity_marvel.*
 import retrofit2.Call
@@ -15,9 +15,8 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-
 class MarvelActivity : AppCompatActivity() {
-    lateinit var mService: RetrofitServieces
+    lateinit var mService1: RetrofitServieces
     lateinit var linearLayoutManager: LinearLayoutManager
     lateinit var adapter: MyMovieAdapter
     lateinit var alertDialog: AlertDialog
@@ -26,7 +25,7 @@ class MarvelActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_marvel)
 
-        mService = Common.retrofitServieces
+        mService1 = Common.marvelRetrofitServieces
         recyclerMovieList.setHasFixedSize(true)
         linearLayoutManager = LinearLayoutManager(this)
         recyclerMovieList.layoutManager = linearLayoutManager
@@ -36,11 +35,11 @@ class MarvelActivity : AppCompatActivity() {
 
     }
 
-    fun getAllMovieList(){
+    private fun getAllMovieList(){
         alertDialog.show()
-        mService.getMovieList().enqueue(object:Callback<MutableList<Movie>>{
+        mService1.getMovieList().enqueue(object:Callback<MutableList<Movie>>{
             override fun onFailure(call: Call<MutableList<Movie>>, t: Throwable) {
-
+                call.cancel()
             }
 
             override fun onResponse(call: Call<MutableList<Movie>>, response: Response<MutableList<Movie>>) {
